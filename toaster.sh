@@ -1,3 +1,4 @@
+[ -d "~/UX320/Feb25-database-child-theme" ] && exit
 cd ~
 mkdir -p UX320
 cd ~/UX320
