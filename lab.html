@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Login</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+	 crossorigin="anonymous" />
+</head>
+
+<body>
+	<div class="container">
+		<h1 id="welcome">Welcome</h1>
+		<h2 id="cloud-lab-script-document-write-window-location-hostname-script-">to the cloud lab
+		</h2>
+		<h3 id="creative-active-individuals-can-only-grow-up-in-a-society-that-emphasizes-learning-instead-of-teaching-chris-alexander">&quot;Creative
+			Active Individuals can only grow up in a society that emphasizes learning instead of teaching.&quot; - Chris Alexander
+		</h3>
+		<p>The idea is that this will be used for guided practice in an educational environment. Please click below to go to your
+			lab.
+		</p>
+		<p class="text-center">
+			<a id="loginName" href="/" class="btn btn-primary btn-lg call_to_action" target="_blank">
+				<i class="fas fa-flask"></i> &nbsp;&nbsp;
+        Go to your lab.</a>
+    </p>
+  </div>
+  <script>
+      let sUser = null;
+      let sLessonPath = null;
+      window.addEventListener("load", ev=>{
+          console.log("Document is ready");
+          try{
+            window.parent.API.LMSInitialize("");
+            sUser = window.parent.API.LMSGetValue("cmi.core.student_name");
+            sLessonPath = window.parent.API.LMSGetValue("cmi.core.lesson_location");
+
+          }catch(e){
+              sUser = "Prachal Aggarwal Sing, Vinay"
+          }
+          sUri = sUser.split(", ").reverse().join("_").toLowerCase().replace(/ /g, "_");
+          fetch("https://apps.rhlab.io/createContainerFromLMS/" + sUri).then(response => {
+              return response.text().then(sUrl =>{
+                document.getElementById("loginName").setAttribute("href", sUrl + "/#/home/" + sUri + "/UX320/Feb25-database-child-theme");
+                fetch("https://apps.rhlab.io/initContainer/" + sUri + "/UX320-database-child-theme").then(response => {
+                    return response.text().then(sResponse =>{
+                        console.log(sResponse);
+                    });
+                });
+
+              })
+        });
+
+      });
+  </script>
+
+</body>
+
+</html>
