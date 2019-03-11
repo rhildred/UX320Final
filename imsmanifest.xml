@@ -2,11 +2,11 @@
 <!--
 Single SCO content packaging example. SCORM 1.2.
 Provided by Rustici Software - http://www.scorm.com
-This example demonstrates the simplest possible manifest, containing just one SCO and 
+This example demonstrates the simplest possible manifest, containing just one SCO and
 no metdata or sequencing information.
 -->
 
-<!-- 
+<!--
 The manifest node contains a unique identifer for this course and the course's version number.
 The schema declartions are important to ensure you are delivering valid XML. For the most part
 these should remain static. Other schema prefixes are allowed, but can limit interoperabilty.
@@ -32,18 +32,18 @@ The XSD files for SCORM 1.2 are not strictly valid and may cause errors in some 
   <!-- There is just one organization. The organization contains just one item.-->
 	<organizations default="rhildred_github_io">
 		<organization identifier="rhildred_github_io">
-			<title>Goto Lab</title>
+			<title>Week 9 Lab</title>
 			<item identifier="item_1" identifierref="resource_1">
-				<title>Goto Lab</title>
+				<title>Week 9 Lab</title>
 			</item>
 		</organization>
 	</organizations>
-  <!-- 
+  <!--
   There is just one resource that represents the single SCO that comprises the entirety of this course.
   The href attribute points to the launch URL for the course and all of the files required by the course
   are listed.
-  
-  One subtle difference between SCORM 1.2 and SCORM 2004 is the cast of the letter "t" in the 
+
+  One subtle difference between SCORM 1.2 and SCORM 2004 is the cast of the letter "t" in the
   adlcp:scormtype attribute
   -->
 	<resources>
