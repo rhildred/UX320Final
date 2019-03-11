@@ -27,9 +27,11 @@
     </p>
   </div>
   <script>
+
       let sUser = null;
       let sLessonPath = null;
       window.addEventListener("load", ev=>{
+          let sBase = "https://apps.rhlab.io/";
           console.log("Document is ready");
           try{
             window.parent.API.LMSInitialize("");
@@ -37,22 +39,23 @@
             sLessonPath = window.parent.API.LMSGetValue("cmi.core.lesson_location");
 
             sUri = sUser.split(", ").reverse().join("_").toLowerCase().replace(/ /g, "_");
-            fetch("https://apps.rhlab.io/createContainerFromLMS/" + sUri).then(response => {
+            fetch(sBase + "createContainerFromLMS/" + sUri).then(response => {
                 return response.text().then(sUrl =>{
-                  document.getElementById("loginName").setAttribute("href", sUrl + "/#/home/" + sUri + "/UX320/Mar11-angular-plugin");
-                  fetch("https://apps.rhlab.io/initContainer/" + sUri + "/UX320AngularPlugin").then(response => {
-                      return response.text().then(sResponse =>{
-                          console.log(sResponse);
-                      });
-                  });
+                    document.getElementById("loginName").setAttribute("href", sUrl );
+                    fetch(sUrl.replace("login", "initContainer") + "/UX320/Mar11-angular-plugin/UX320AngularPlugin").then(response => {
+                        return response.text().then(sResponse =>{
+                            console.log(sResponse);
+                        });
+                    });
 
                 })
             });
-          }catch(err){
-            console.log(err);
+          }catch(e){
+              console.log(e);
           }
 
       });
+
   </script>
 
 </body>
