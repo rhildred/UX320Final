@@ -36,21 +36,21 @@
             sUser = window.parent.API.LMSGetValue("cmi.core.student_name");
             sLessonPath = window.parent.API.LMSGetValue("cmi.core.lesson_location");
 
-          }catch(e){
-              sUser = "Prachal Aggarwal Sing, Vinay"
-          }
-          sUri = sUser.split(", ").reverse().join("_").toLowerCase().replace(/ /g, "_");
-          fetch("https://apps.rhlab.io/createContainerFromLMS/" + sUri).then(response => {
-              return response.text().then(sUrl =>{
-                document.getElementById("loginName").setAttribute("href", sUrl + "/#/home/" + sUri + "/UX320/Feb25-database-child-theme");
-                fetch("https://apps.rhlab.io/initContainer/" + sUri + "/UX320-database-child-theme").then(response => {
-                    return response.text().then(sResponse =>{
-                        console.log(sResponse);
-                    });
-                });
+            sUri = sUser.split(", ").reverse().join("_").toLowerCase().replace(/ /g, "_");
+            fetch("https://apps.rhlab.io/createContainerFromLMS/" + sUri).then(response => {
+                return response.text().then(sUrl =>{
+                  document.getElementById("loginName").setAttribute("href", sUrl + "/#/home/" + sUri + "/UX320/Mar11-angular-plugin");
+                  fetch("https://apps.rhlab.io/initContainer/" + sUri + "/UX320AngularPlugin").then(response => {
+                      return response.text().then(sResponse =>{
+                          console.log(sResponse);
+                      });
+                  });
 
-              })
-        });
+                })
+            });
+          }catch(err){
+            console.log(err);
+          }
 
       });
   </script>
