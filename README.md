@@ -59,7 +59,7 @@ The important part of the `package.json` file for process management is the `scr
 
 We are using pm2 for process management and we have implemented:
 
-|||
+|Command|What it Does|
 |---|---|
 |start|starts the index.js in the current folder|
 |log|continuously displays the log files in the current terminal window. Note* to see the logs type `npm run log` (long story)|
