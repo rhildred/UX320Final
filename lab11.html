@@ -29,7 +29,7 @@
 		let sLessonPath = null;
 		window.addEventListener("load", ev=>{
             let sBase = "https://apps.rhlab.io/";
-            let sWeek = "UX320AngularPlugin"
+            let sWeek = "UX320FinalPractice"
             fetch("https://rhildred.github.io/" + sWeek + "/README.md").then(response => {
                 return response.text().then(sReadme =>{
                     target = document.getElementById('targetDiv'),
@@ -49,7 +49,7 @@
                 fetch(sBase + "createContainerFromLMS/" + sUri).then(response => {
                     return response.text().then(sUrl =>{
                         document.getElementById("loginName").setAttribute("href", sUrl );
-                        fetch(sUrl.replace("login", "initContainer") + "/UX320/Mar11-angular-plugin/" + sWeek).then(response => {
+                        fetch(sUrl.replace("login", "initContainer") + "/UX320/FinalPractice/" + sWeek).then(response => {
                             return response.text().then(sResponse =>{
                                 console.log(sResponse);
                             });
