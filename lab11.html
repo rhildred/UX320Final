@@ -33,7 +33,7 @@
             fetch("https://rhildred.github.io/" + sWeek + "/README.md").then(response => {
                 return response.text().then(sReadme =>{
                     target = document.getElementById('targetDiv'),
-                    converter = new showdown.Converter(),
+                    converter = new showdown.Converter({tables: true, strikethrough: true}),
                     html = converter.makeHtml(sReadme);
 
                     target.innerHTML = html;
